@@ -151,6 +151,7 @@
     .stats-bar { flex-wrap: wrap; }
     .stat { max-width: 50%; min-width: 120px; }
     .how-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .contato-grid { grid-template-columns: 1fr !important; }
   }
 </style>
 </head>
@@ -323,6 +324,79 @@
         Quero simular pelo WhatsApp
       </a>
       <p class="form-disclaimer">Ao clicar, você será direcionado ao WhatsApp da Helpi Credi. Seus dados não são compartilhados com terceiros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section style="background:var(--navy-mid); padding:64px 24px; border-top:1px solid rgba(255,255,255,0.07);">
+  <div style="max-width:1080px; margin:0 auto;">
+    <div style="font-size:0.78rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:12px;">Onde estamos</div>
+    <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:800; letter-spacing:-0.8px; margin-bottom:40px; line-height:1.1;">Atendimento <span style="color:var(--green)">presencial e digital</span></h2>
+
+    <div class="contato-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start;">
+
+      <!-- INFO -->
+      <div style="display:flex; flex-direction:column; gap:20px;">
+
+        <!-- Endereço -->
+        <a href="https://maps.google.com/?q=Av.+Getúlio+Vargas,+155B,+Centro,+Cuiabá,+MT" target="_blank"
+           style="display:flex; gap:16px; align-items:flex-start; background:var(--navy); border:1px solid rgba(255,255,255,0.07); border-radius:var(--radius); padding:24px; text-decoration:none; color:var(--white); transition:border-color 0.2s;"
+           onmouseover="this.style.borderColor='rgba(0,196,106,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+          <div style="width:42px;height:42px;background:rgba(0,196,106,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">📍</div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:4px;">Nossa sede</div>
+            <div style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.6;">Av. Getúlio Vargas, 155B<br>Centro · Cuiabá · MT · CEP 78005-370</div>
+            <div style="font-size:0.78rem;color:var(--green);margin-top:6px;font-weight:500;">Clique para abrir no Maps →</div>
+          </div>
+        </a>
+
+        <!-- Telefones -->
+        <div style="background:var(--navy); border:1px solid rgba(255,255,255,0.07); border-radius:var(--radius); padding:24px;">
+          <div style="display:flex; gap:12px; align-items:center; margin-bottom:16px;">
+            <div style="width:42px;height:42px;background:rgba(0,196,106,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">📞</div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;">Fale com a equipe</div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="tel:+5565992062890" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,0.04);border-radius:10px;text-decoration:none;color:var(--white);transition:background 0.18s;"
+               onmouseover="this.style.background='rgba(0,196,106,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+              <div>
+                <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:2px;">Raphael</div>
+                <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;">(65) 99206-2890</div>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <a href="https://wa.me/5565992062890?text=Olá!%20Vim%20pelo%20site%20da%20Helpi%20Credi%20e%20quero%20simular%20meu%20crédito%20consignado." target="_blank"
+                   style="background:var(--green);color:var(--navy);font-size:0.75rem;font-weight:700;padding:6px 12px;border-radius:100px;text-decoration:none;font-family:'Syne',sans-serif;">
+                  WhatsApp
+                </a>
+              </div>
+            </a>
+            <a href="tel:+5565993143670" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,0.04);border-radius:10px;text-decoration:none;color:var(--white);transition:background 0.18s;"
+               onmouseover="this.style.background='rgba(0,196,106,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+              <div>
+                <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:2px;">Vanderson</div>
+                <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;">(65) 99314-3670</div>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <a href="https://wa.me/5565993143670?text=Olá!%20Vim%20pelo%20site%20da%20Helpi%20Credi%20e%20quero%20simular%20meu%20crédito%20consignado." target="_blank"
+                   style="background:var(--green);color:var(--navy);font-size:0.75rem;font-weight:700;padding:6px 12px;border-radius:100px;text-decoration:none;font-family:'Syne',sans-serif;">
+                  WhatsApp
+                </a>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MAPA -->
+      <div style="border-radius:var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,0.07); height:320px;">
+        <iframe
+          src="https://maps.google.com/maps?q=Av.+Get%C3%BAlio+Vargas+155B+Centro+Cuiab%C3%A1+MT&output=embed"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+
     </div>
   </div>
 </section>
