@@ -330,6 +330,166 @@
 
 
 
+<!-- SIMULADOR -->
+<section style="padding:80px 24px; background:var(--navy-mid); border-top:1px solid rgba(255,255,255,0.07);" id="simulador">
+  <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;" class="sim-grid">
+
+    <!-- Texto lado esquerdo -->
+    <div>
+      <div style="font-size:0.78rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:12px;">Simulador gratuito</div>
+      <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; letter-spacing:-1px; line-height:1.1; margin-bottom:16px;">Descubra quanto você pode <span style="color:var(--green)">receber agora</span></h2>
+      <p style="font-size:0.95rem; color:rgba(255,255,255,0.55); line-height:1.65; margin-bottom:28px;">Informe sua margem disponível e descubra em segundos quanto crédito consignado você pode contratar.</p>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; gap:10px; font-size:0.9rem; color:rgba(255,255,255,0.75);">
+          <div style="width:28px;height:28px;background:rgba(0,196,106,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✅</div>
+          Simulação instantânea e gratuita
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; font-size:0.9rem; color:rgba(255,255,255,0.75);">
+          <div style="width:28px;height:28px;background:rgba(0,196,106,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✅</div>
+          Sem consulta ao CPF nesta etapa
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; font-size:0.9rem; color:rgba(255,255,255,0.75);">
+          <div style="width:28px;height:28px;background:rgba(0,196,106,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✅</div>
+          96 parcelas · Taxa 1,80% a.m.
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; font-size:0.9rem; color:rgba(255,255,255,0.75);">
+          <div style="width:28px;height:28px;background:rgba(0,196,106,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✅</div>
+          Desconto direto no benefício INSS
+        </div>
+      </div>
+    </div>
+
+    <!-- Card simulador -->
+    <div style="background:var(--navy); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:36px 32px;">
+      <h3 style="font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:700; margin-bottom:6px;">Simule seu consignado</h3>
+      <p style="font-size:0.85rem; color:rgba(255,255,255,0.45); margin-bottom:28px;">Informe sua margem disponível e veja o valor que pode receber</p>
+
+      <div style="margin-bottom:16px;">
+        <label style="display:block;font-size:0.8rem;font-weight:500;color:rgba(255,255,255,0.55);margin-bottom:6px;letter-spacing:0.3px;">Minha margem disponível (R$)</label>
+        <input type="text" id="sim-beneficio" placeholder="Ex: R$ 350,00"
+          oninput="formatarMoeda(this); calcularSimulador()"
+          style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:1rem;outline:none;transition:border-color 0.18s;"
+          onfocus="this.style.borderColor='var(--green)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:6px;">💡 A margem está no seu extrato do INSS ou cartão de benefício</div>
+      </div>
+
+      <!-- Resultado -->
+      <div id="sim-resultado" style="display:none; background:rgba(0,196,106,0.08); border:1px solid rgba(0,196,106,0.25); border-radius:12px; padding:20px; margin-bottom:20px;">
+        <div style="font-size:0.78rem; color:var(--green); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">Sua simulação</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+          <div style="background:rgba(255,255,255,0.05); border-radius:10px; padding:14px;">
+            <div style="font-size:0.75rem; color:rgba(255,255,255,0.45); margin-bottom:4px;">Sua margem</div>
+            <div id="sim-margem" style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800; color:var(--green);">—</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:10px; padding:14px;">
+            <div style="font-size:0.75rem; color:rgba(255,255,255,0.45); margin-bottom:4px;">Parcela mensal</div>
+            <div id="sim-parcela" style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800; color:rgba(255,255,255,0.8);">—</div>
+          </div>
+        </div>
+        <div style="background:rgba(0,196,106,0.12); border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:0.78rem; color:rgba(255,255,255,0.5); margin-bottom:4px;">Valor que você pode receber</div>
+          <div id="sim-valor" style="font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:var(--green);">—</div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin-top:4px;">em 96 parcelas · 1,80% a.m.</div>
+        </div>
+        <div id="sim-aviso-minimo" style="display:none; font-size:0.78rem; color:#ffaa00; margin-top:10px; text-align:center;">
+          ⚠️ Margem mínima para contratação: R$ 35,00
+        </div>
+      </div>
+
+      <!-- Botão WhatsApp -->
+      <a id="sim-btn-wpp" href="#" onclick="abrirWppSimulador(event)"
+         style="display:flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:var(--navy);font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;padding:16px;border-radius:10px;text-decoration:none;transition:background 0.18s;"
+         onmouseover="this.style.background='var(--green-dark)'" onmouseout="this.style.background='var(--green)'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.533 5.86L.057 23.272a.75.75 0 00.92.92l5.41-1.476A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.714 9.714 0 01-4.943-1.35l-.355-.21-3.674 1.002 1.002-3.674-.21-.355A9.714 9.714 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+        🚀 Quero contratar pelo WhatsApp
+      </a>
+      <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);text-align:center;margin-top:12px;line-height:1.5;">
+        Simulação estimada. Valores sujeitos à análise e aprovação do banco parceiro.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const COEFICIENTE = 0.0234399777;
+const MARGEM_MIN = 35;
+
+function formatarMoeda(input) {
+  var v = input.value.replace(/\D/g, '');
+  v = (parseInt(v) / 100).toFixed(2);
+  v = v.replace('.', ',');
+  v = v.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  input.value = 'R$ ' + v;
+}
+
+function parseMoeda(str) {
+  return parseFloat(str.replace(/[R$\s.]/g, '').replace(',', '.')) || 0;
+}
+
+function formatReal(valor) {
+  return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+function calcularSimulador() {
+  var margem = parseMoeda(document.getElementById('sim-beneficio').value);
+  var resultado = document.getElementById('sim-resultado');
+  var avisoMin = document.getElementById('sim-aviso-minimo');
+
+  if (margem <= 0) { resultado.style.display = 'none'; return; }
+
+  var valorEmprestimo = margem / COEFICIENTE;
+
+  resultado.style.display = 'block';
+  document.getElementById('sim-margem').textContent = formatReal(margem);
+  document.getElementById('sim-parcela').textContent = formatReal(margem) + '/mês';
+
+  if (margem < MARGEM_MIN) {
+    document.getElementById('sim-valor').textContent = '—';
+    document.getElementById('sim-valor').style.color = '#ffaa00';
+    avisoMin.style.display = 'block';
+  } else {
+    document.getElementById('sim-valor').textContent = formatReal(valorEmprestimo);
+    document.getElementById('sim-valor').style.color = 'var(--green)';
+    avisoMin.style.display = 'none';
+  }
+}
+
+function abrirWppSimulador(e) {
+  e.preventDefault();
+  var margem = parseMoeda(document.getElementById('sim-beneficio').value);
+
+  if (margem <= 0) {
+    alert('Por favor, informe sua margem disponível para simular.');
+    return;
+  }
+
+  var valorEmprestimo = margem / COEFICIENTE;
+  var msg;
+
+  if (margem < MARGEM_MIN) {
+    msg = 'Olá! Fiz a simulação no site da *Helpi Credi* e gostaria de entender melhor as opções disponíveis para a minha margem de ' + formatReal(margem) + '.';
+  } else {
+    msg = 'Olá! Fiz a simulação no site da *Helpi Credi* e tenho interesse em contratar o crédito consignado.\n\n'
+        + '*Minha margem disponível:* ' + formatReal(margem) + '/mês\n'
+        + '*Valor simulado:* ' + formatReal(valorEmprestimo) + '\n'
+        + '*Parcelas:* 96x de ' + formatReal(margem) + '\n\n'
+        + 'Gostaria de prosseguir com a contratação!';
+  }
+
+  dispararConversao();
+  setTimeout(function() {
+    window.open('https://wa.me/5565992062890?text=' + encodeURIComponent(msg), '_blank');
+  }, 300);
+}
+</script>
+
+<style>
+@media (max-width: 720px) {
+  .sim-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+}
+</style>
+
 <!-- NOTÍCIAS / CARROSSEL -->
 <section style="padding:80px 24px; background:var(--navy);">
   <div style="max-width:1080px; margin:0 auto;">
