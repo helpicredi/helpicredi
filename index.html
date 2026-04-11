@@ -45,6 +45,23 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
 
+
+  /* MENU NAVEGAÇÃO */
+  .nav-menu { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+  .nav-link { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.7); text-decoration: none; padding: 7px 12px; border-radius: 8px; transition: background 0.18s, color 0.18s; white-space: nowrap; }
+  .nav-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .nav-link-cta { background: var(--green); color: var(--navy) !important; font-weight: 700; padding: 7px 16px; }
+  .nav-link-cta:hover { background: var(--green-dark) !important; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+  @media (max-width: 900px) {
+    nav { flex-wrap: wrap; gap: 8px; }
+    .nav-hamburger { display: flex; }
+    .nav-menu { display: none; width: 100%; flex-direction: column; align-items: flex-start; background: var(--navy-mid); border-radius: 12px; padding: 12px; gap: 2px; margin-top: 4px; }
+    .nav-menu.open { display: flex; }
+    .nav-link { width: 100%; padding: 10px 14px; }
+  }
+
   /* NAV */
   .hero { min-height: 100vh; background: var(--navy); position: relative; display: flex; flex-direction: column; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,196,106,0.18) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
@@ -172,7 +189,19 @@
       Helpi<span>Credi</span>
       <small>Crédito Consignado</small>
     </div>
-    <div class="nav-badge">📍 Cuiabá & Várzea Grande</div>
+    <div class="nav-menu" id="navMenu">
+      <a href="#inss" class="nav-link">Consignado INSS</a>
+      <a href="#servidor" class="nav-link">Servidor Público</a>
+      <a href="#cgv" class="nav-link">CGV</a>
+      <a href="#clt" class="nav-link">Crédito CLT</a>
+      <a href="#consorcio" class="nav-link">Consórcio</a>
+      <a href="#simulador" class="nav-link">Simulador</a>
+      <a href="#noticias" class="nav-link">Notícias</a>
+      <a href="#contato" class="nav-link nav-link-cta">Contato</a>
+    </div>
+    <button class="nav-hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <div class="hero-body">
@@ -198,7 +227,7 @@
 </section>
 
 <!-- PRODUCTS -->
-<section style="padding:80px 24px; background:var(--navy);">
+<section id="inss" style="padding:80px 24px; background:var(--navy);">
   <div style="max-width:1080px; margin:0 auto;">
     <div class="section-label">O que oferecemos</div>
     <h2 class="section-title">Produtos disponíveis<br><span>para você</span></h2>
@@ -212,7 +241,7 @@
 </section>
 
 <!-- PUBLICS -->
-<section style="background:var(--navy-mid); padding:80px 24px;">
+<section id="servidor" style="background:var(--navy-mid); padding:80px 24px;">
   <div style="max-width:1080px; margin:0 auto;">
     <div class="section-label">Quem atendemos</div>
     <h2 class="section-title">Feito para <span>você</span></h2>
@@ -330,6 +359,175 @@
 </section>
 
 
+
+
+<!-- CGV -->
+<section id="cgv" style="padding:80px 24px; background:var(--navy); border-top:1px solid rgba(255,255,255,0.07);">
+  <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;" class="prod-grid">
+    <div>
+      <div style="font-size:0.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Crédito com Garantia</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:16px;">CGV — Use seu veículo<br><span style="color:var(--green)">para obter crédito</span></h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:28px;">Transforme o valor do seu veículo quitado em crédito na hora. Sem precisar vender o carro — você continua usando normalmente enquanto quita o empréstimo.</p>
+      <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:32px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:42px;height:42px;background:rgba(0,196,106,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">🚗</div>
+              <div><div style="font-weight:600;font-size:0.95rem;margin-bottom:3px;">Até 100% do valor FIPE</div><div style="font-size:0.83rem;color:rgba(255,255,255,0.45);line-height:1.5;">Crédito calculado sobre a tabela FIPE do seu veículo</div></div>
+            </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:42px;height:42px;background:rgba(0,196,106,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">📅</div>
+              <div><div style="font-weight:600;font-size:0.95rem;margin-bottom:3px;">Até 60 meses para pagar</div><div style="font-size:0.83rem;color:rgba(255,255,255,0.45);line-height:1.5;">Parcelas que cabem no seu orçamento</div></div>
+            </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:42px;height:42px;background:rgba(0,196,106,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">🏦</div>
+              <div><div style="font-weight:600;font-size:0.95rem;margin-bottom:3px;">Banco C6 e Banco Votorantim</div><div style="font-size:0.83rem;color:rgba(255,255,255,0.45);line-height:1.5;">Parceiros com as melhores condições do mercado</div></div>
+            </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:42px;height:42px;background:rgba(0,196,106,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">✅</div>
+              <div><div style="font-weight:600;font-size:0.95rem;margin-bottom:3px;">Veículo quitado e sem débitos</div><div style="font-size:0.83rem;color:rgba(255,255,255,0.45);line-height:1.5;">Consulte condições · Crédito sujeito a análise</div></div>
+            </div>
+      </div>
+      <a href="https://wa.me/5565992062890?text=Olá!%20Tenho%20interesse%20no%20Crédito%20com%20Garantia%20de%20Veículo%20(CGV).%20Pode%20me%20passar%20mais%20informações?" target="_blank" onclick="dispararConversao()"
+       style="display:inline-flex;align-items:center;gap:10px;background:var(--green);color:var(--navy);font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;padding:14px 28px;border-radius:100px;text-decoration:none;box-shadow:0 8px 24px rgba(0,196,106,0.3);transition:transform 0.18s,background 0.18s;"
+       onmouseover="this.style.background='var(--green-dark)';this.style.transform='translateY(-2px)'"
+       onmouseout="this.style.background='var(--green)';this.style.transform='translateY(0)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.533 5.86L.057 23.272a.75.75 0 00.92.92l5.41-1.476A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.714 9.714 0 01-4.943-1.35l-.355-.21-3.674 1.002 1.002-3.674-.21-.355A9.714 9.714 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>Simular meu CGV</a>
+    </div>
+    <div style="background:var(--navy-mid);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:36px;">
+      <div style="font-size:0.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:16px;">Como funciona</div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,196,106,0.15);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;color:var(--green);flex-shrink:0;">1</div>
+          <div style="padding-top:4px;"><div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">Informe o veículo</div><div style="font-size:0.82rem;color:rgba(255,255,255,0.45);">Ano, modelo e condição do veículo</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,196,106,0.15);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;color:var(--green);flex-shrink:0;">2</div>
+          <div style="padding-top:4px;"><div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">Análise e proposta</div><div style="font-size:0.82rem;color:rgba(255,255,255,0.45);">Avaliamos e apresentamos as condições</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,196,106,0.15);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;color:var(--green);flex-shrink:0;">3</div>
+          <div style="padding-top:4px;"><div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">Assine e receba</div><div style="font-size:0.82rem;color:rgba(255,255,255,0.45);">Contrato digital e dinheiro na conta</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:32px;height:32px;border-radius:50%;background:rgba(0,196,106,0.15);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;color:var(--green);flex-shrink:0;">4</div>
+          <div style="padding-top:4px;"><div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">Continue usando o veículo</div><div style="font-size:0.82rem;color:rgba(255,255,255,0.45);">O carro fica com você durante todo o contrato</div></div>
+        </div>
+      </div>
+      <div style="margin-top:20px;background:rgba(255,170,0,0.08);border:1px solid rgba(255,170,0,0.2);border-radius:10px;padding:14px;">
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.5;">⚠️ Veículo deve estar quitado, sem multas e IPVA em dia. Crédito sujeito a análise e aprovação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRÉDITO CLT -->
+<section id="clt" style="padding:80px 24px; background:var(--navy-mid); border-top:1px solid rgba(255,255,255,0.07);">
+  <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;" class="prod-grid">
+    <div style="background:var(--navy);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:36px;">
+      <div style="font-size:0.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:16px;">Quem pode contratar</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+        <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;color:rgba(255,255,255,0.75);">
+          <div style="width:8px;height:8px;background:var(--green);border-radius:50%;flex-shrink:0;"></div>Empregado com carteira assinada (CLT)
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;color:rgba(255,255,255,0.75);">
+          <div style="width:8px;height:8px;background:var(--green);border-radius:50%;flex-shrink:0;"></div>Mínimo de 5 meses de contrato ativo
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;color:rgba(255,255,255,0.75);">
+          <div style="width:8px;height:8px;background:var(--green);border-radius:50%;flex-shrink:0;"></div>Desconto direto na folha de pagamento
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;color:rgba(255,255,255,0.75);">
+          <div style="width:8px;height:8px;background:var(--green);border-radius:50%;flex-shrink:0;"></div>Empresas privadas de qualquer setor
+        </div>
+      </div>
+      <div style="background:rgba(0,196,106,0.08);border:1px solid rgba(0,196,106,0.2);border-radius:12px;padding:20px;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--green);margin-bottom:4px;">Menores taxas do mercado</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.5);">Trabalhamos com diversos bancos para garantir a melhor condição para você</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Para quem trabalha de carteira</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:16px;">Crédito CLT —<br><span style="color:var(--green)">consignado privado</span></h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:28px;">Trabalhador com carteira assinada também tem direito ao crédito consignado! Desconto direto na folha, taxas menores e sem consulta ao SPC/Serasa.</p>
+      <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:32px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:42px;height:42px;background:rgba(0,196,106,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">💼</div>
+              <div><div style="font-weight:600;font-size:0.95rem;margin-bottom:3px;">Consignado Privado</div><div style="font-size:0.83rem;color:rgba(255,255,255,0.45);line-height:1.5;">Exclusivo para empregados com carteira assinada há mais de 5 meses</div></div>
+            </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:42px;height:42px;background:rgba(0,196,106,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">💰</div>
+              <div><div style="font-weight:600;font-size:0.95rem;margin-bottom:3px;">Menores taxas disponíveis</div><div style="font-size:0.83rem;color:rgba(255,255,255,0.45);line-height:1.5;">Múltiplos bancos parceiros para a melhor oferta</div></div>
+            </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:42px;height:42px;background:rgba(0,196,106,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">🚫</div>
+              <div><div style="font-weight:600;font-size:0.95rem;margin-bottom:3px;">Sem consulta ao SPC/Serasa</div><div style="font-size:0.83rem;color:rgba(255,255,255,0.45);line-height:1.5;">Aprovação facilitada com desconto em folha</div></div>
+            </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:42px;height:42px;background:rgba(0,196,106,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem;">⚡</div>
+              <div><div style="font-weight:600;font-size:0.95rem;margin-bottom:3px;">Liberação rápida</div><div style="font-size:0.83rem;color:rgba(255,255,255,0.45);line-height:1.5;">Processo 100% digital e sem burocracia</div></div>
+            </div>
+      </div>
+      <a href="https://wa.me/5565992062890?text=Olá!%20Trabalho%20com%20carteira%20assinada%20e%20tenho%20interesse%20no%20Crédito%20CLT.%20Pode%20me%20passar%20mais%20informações?" target="_blank" onclick="dispararConversao()"
+       style="display:inline-flex;align-items:center;gap:10px;background:var(--green);color:var(--navy);font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;padding:14px 28px;border-radius:100px;text-decoration:none;box-shadow:0 8px 24px rgba(0,196,106,0.3);transition:transform 0.18s,background 0.18s;"
+       onmouseover="this.style.background='var(--green-dark)';this.style.transform='translateY(-2px)'"
+       onmouseout="this.style.background='var(--green)';this.style.transform='translateY(0)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.533 5.86L.057 23.272a.75.75 0 00.92.92l5.41-1.476A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.714 9.714 0 01-4.943-1.35l-.355-.21-3.674 1.002 1.002-3.674-.21-.355A9.714 9.714 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>Simular Crédito CLT</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONSÓRCIO -->
+<section id="consorcio" style="padding:80px 24px; background:var(--navy); border-top:1px solid rgba(255,255,255,0.07);">
+  <div style="max-width:1080px; margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div style="font-size:0.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Planejamento inteligente</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:16px;">Consórcio <span style="color:var(--green)">Canópus</span></h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,0.55);max-width:560px;margin:0 auto;line-height:1.7;">Realize seus sonhos com planejamento. Sem juros, sem entrada obrigatória e com parcelas que cabem no seu orçamento.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:48px;">
+      <div style="background:var(--navy-mid);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius);padding:32px;text-align:center;transition:border-color 0.2s,transform 0.2s;"
+           onmouseover="this.style.borderColor='rgba(0,196,106,0.35)';this.style.transform='translateY(-4px)'"
+           onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform='translateY(0)'">
+        <div style="font-size:2.5rem;margin-bottom:16px;">🚗</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:8px;">Consórcio de Veículos</h3>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:20px;">Carros, motos e veículos pesados. Planeje a compra do seu próximo veículo sem pagar juros.</p>
+        <div style="font-size:0.78rem;color:var(--green);font-weight:600;">Parcelas acessíveis · Sem juros</div>
+      </div>
+      <div style="background:var(--navy-mid);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius);padding:32px;text-align:center;transition:border-color 0.2s,transform 0.2s;"
+           onmouseover="this.style.borderColor='rgba(0,196,106,0.35)';this.style.transform='translateY(-4px)'"
+           onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform='translateY(0)'">
+        <div style="font-size:2.5rem;margin-bottom:16px;">🏠</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:8px;">Consórcio de Imóveis</h3>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:20px;">Casa própria, apartamento ou terreno. O caminho mais econômico para conquistar seu imóvel.</p>
+        <div style="font-size:0.78rem;color:var(--green);font-weight:600;">Sem entrada obrigatória · Flexível</div>
+      </div>
+      <div style="background:var(--navy-mid);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius);padding:32px;text-align:center;transition:border-color 0.2s,transform 0.2s;"
+           onmouseover="this.style.borderColor='rgba(0,196,106,0.35)';this.style.transform='translateY(-4px)'"
+           onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform='translateY(0)'">
+        <div style="font-size:2.5rem;margin-bottom:16px;">⚙️</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:8px;">Consórcio de Serviços</h3>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:20px;">Reformas, viagens, educação e muito mais. Planeje seus projetos com parcelas sob medida.</p>
+        <div style="font-size:0.78rem;color:var(--green);font-weight:600;">Diversas categorias · Sem juros</div>
+      </div>
+    </div>
+    <div style="background:var(--navy-mid);border:1px solid rgba(0,196,106,0.2);border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;" class="consorcio-cta-grid">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:12px;">Por que escolher o consórcio?</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.75);">✅ Sem juros — apenas taxa de administração</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.75);">✅ Sem entrada obrigatória</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.75);">✅ Possibilidade de oferecer lances</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.75);">✅ Parceiro autorizado Canópus Consórcio</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:0.9rem;color:rgba(255,255,255,0.75);">✅ Atendimento digital e presencial</div>
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px;">Solicite uma simulação</div>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:20px;line-height:1.5;">Fale com a Helpi Credi e descubra o plano ideal para você</p>
+        <a href="https://wa.me/5565992062890?text=Olá!%20Tenho%20interesse%20em%20conhecer%20as%20opções%20de%20Consórcio%20Canópus.%20Pode%20me%20ajudar?" target="_blank" onclick="dispararConversao()"
+       style="display:inline-flex;align-items:center;gap:10px;background:var(--green);color:var(--navy);font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;padding:14px 28px;border-radius:100px;text-decoration:none;box-shadow:0 8px 24px rgba(0,196,106,0.3);transition:transform 0.18s,background 0.18s;"
+       onmouseover="this.style.background='var(--green-dark)';this.style.transform='translateY(-2px)'"
+       onmouseout="this.style.background='var(--green)';this.style.transform='translateY(0)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.533 5.86L.057 23.272a.75.75 0 00.92.92l5.41-1.476A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.714 9.714 0 01-4.943-1.35l-.355-.21-3.674 1.002 1.002-3.674-.21-.355A9.714 9.714 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>Quero saber sobre consórcio</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- SIMULADOR -->
 <section style="padding:80px 24px; background:var(--navy-mid); border-top:1px solid rgba(255,255,255,0.07);" id="simulador">
@@ -723,6 +921,7 @@ function abrirWppSimulador(e) {
 </section>
 
 <!-- NOTÍCIAS / CARROSSEL -->
+<span id="noticias"></span>
 <section style="padding:80px 24px; background:var(--navy);">
   <div style="max-width:1080px; margin:0 auto;">
     <div style="font-size:0.78rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:12px;">Fique por dentro</div>
@@ -812,6 +1011,7 @@ function irParaSlide(n) {
 setInterval(function() { moverCarrossel(1); }, 5000);
 </script>
 
+<span id="contato"></span>
 <!-- CONTATO -->
 <section style="background:var(--navy-mid); padding:64px 24px; border-top:1px solid rgba(255,255,255,0.07);">
   <div style="max-width:1080px; margin:0 auto;">
@@ -920,5 +1120,26 @@ function gerarLinkWpp(e) {
   setTimeout(() => window.open(url, '_blank'), 300);
 }
 </script>
+
+<style>
+@media (max-width: 720px) {
+  .prod-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .consorcio-cta-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+}
+</style>
+
+<script>
+function toggleMenu() {
+  var menu = document.getElementById('navMenu');
+  menu.classList.toggle('open');
+}
+// Fechar menu ao clicar em link
+document.querySelectorAll('.nav-link').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('navMenu').classList.remove('open');
+  });
+});
+</script>
+
 </body>
 </html>
